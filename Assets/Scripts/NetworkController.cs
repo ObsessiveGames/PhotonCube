@@ -11,7 +11,6 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        // connect to the master server
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -19,7 +18,6 @@ public class NetworkController : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();
-        Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
     }
 
     public override void OnDisconnected(DisconnectCause cause)

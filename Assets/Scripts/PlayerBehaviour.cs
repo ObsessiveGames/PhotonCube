@@ -6,33 +6,14 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviourPunCallbacks
 {
-    // local player
-    public static PlayerBehaviour instance;
-    public Player photonPlayer;
-
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Material[] materials;
-    private int currentMaterial;
+    private int currentMaterial = 1;
 
-    private void Awake()
-    {
-        currentMaterial = 1;
-    }
-
-    [PunRPC]
-    public void Initialize(Player player)
-    {
-        photonPlayer = player;
-
-        if (player.IsLocal)
-        {
-            instance = this;
-        }
-    }
-
+    // Would use the new input system and generate the c# class to have the space only fire upon event, or even create an action.
     private void Update()
     {
-        if (!base.photonView.IsMine) { return; }
+        if (!photonView.IsMine) { return; }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
