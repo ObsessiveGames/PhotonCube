@@ -36,9 +36,6 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabPath, transform.position, Quaternion.identity);
-
-        // initialize player
-        playerObj.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
+        PhotonNetwork.Instantiate(playerPrefabPath, transform.position, Quaternion.identity);
     }
 }
